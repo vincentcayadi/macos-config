@@ -1,0 +1,25 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+right_format = "$time"
+
+[line_break]
+disabled = true
+
+[battery]
+disabled = true
+
+[time]
+disabled = false
+style = "bold bright-rosewater"
+format = "[$time]($style)"
+
+[directory]
+disabled =false
+truncation_length = 3
+truncate_to_repo=false
+home_symbol = "🏠"
+truncation_symbol = '…/'
+
+[cmd_duration]
+disabled = true
