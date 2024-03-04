@@ -8,12 +8,13 @@ eval $(thefuck --alias FUCK)
 
 # ZSH Plugins
 source $(brew --prefix nvm)/nvm.sh
-source $(brew --prefix z)/etc/profile.d/z.sh
+
 #ALIAS
-alias ls="exa -alh --icons"
-alias tree="exa --tree"
+alias ls="eza -alh --icons"
+alias tree="eza --tree"
 alias cat="bat"
 alias home="cd ~"
+alias icat="kitten icat"
 export PATH=$PATH:"$HOME/.local/bin"
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -23,5 +24,4 @@ alias sysclean='echo "Initiating Upgrades 🚀" && brew upgrade && brew upgrade 
 
 #starship
 eval "$(starship init zsh)"
-
-cutefetch
+neofetch
