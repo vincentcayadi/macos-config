@@ -11,7 +11,7 @@ source $(brew --prefix nvm)/nvm.sh
 
 #ALIAS
 alias ls="eza -alh --icons"
-alias tree="eza --tree"
+alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
 alias cat="bat"
 alias home="cd ~"
 alias icat="kitten icat"
@@ -20,8 +20,17 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # system clean
-alias sysclean='echo "Initiating Upgrades 🚀" && brew upgrade && brew upgrade --greedy && brew update && echo "Cleaning 🧹" && brew autoremove && brew cleanup --prune=all && yarn cache clean && echo "Completed" '
+alias sysclean='echo "Initiating Upgrades 🚀" && brew upgrade && brew update && echo "Cleaning 🧹" && brew autoremove && brew cleanup --prune=all && yarn cache clean && echo "Completed" '
+
+# yt-dlp
+alias bestaudio="yt-dlp -x --audio-format m4a"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && \. "/usr/local/opt/nvm/etc/bash_completion"
 
 #starship
 eval "$(starship init zsh)"
-neofetch
+
+PATH=~/.console-ninja/.bin:$PATH

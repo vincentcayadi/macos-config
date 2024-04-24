@@ -1,126 +1,46 @@
-add_newline = true
-
-[line_break]
-disabled=false
-
-[character]
-success_symbol="[»](#61AFEF)"
-error_symbol="[✘](bold red)"
-
-[battery]
-full_symbol = "🔋"
-charging_symbol = "⚡️"
-discharging_symbol = "󰂃 "
-
-[[battery.display]]
-threshold = 20
-style = "bold red"
-
-[hostname]
-ssh_only = false
-format =  "[$hostname](bold red) on "
-trim_at = ".companyname.com"
-disabled = false
-
-[aws]
-symbol = " "
-disabled = true
-
-[lua]
-disabled = true
-
-[conda]
-symbol = " "
-disabled = true
-
-[dart]
-symbol = " "
-disabled = true
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
 
 [directory]
-home_symbol = " "
-read_only = " "
-truncation_length = 2
-truncation_symbol = "../"
+style = "blue"
 
-#[docker]
-#symbol = " "
-#disabled = true
-
-[elixir]
-symbol = " "
-disabled = true
-
-[elm]
-symbol = " "
-disabled = true
-
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-symbol = "  "
+format = "[$branch]($style)"
+style = "bright-black"
 
-[golang]
-symbol = " "
-disabled = true
-
-[haskell]
-symbol = " "
-disabled = true
-
-[hg_branch]
-symbol = " "
-
-[java]
-symbol = " "
-disabled = true
-
-[julia]
-symbol = " "
-disabled = true
-
-[memory_usage]
-symbol = ""
-disabled = true
-threshold = -1
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 style = "cyan"
-format = "via [${ram}]($style)"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
 
-[nim]
-symbol = " "
-disabled = true
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
 
-[nix_shell]
-symbol = " "
-disabled = true
-
-[nodejs]
-symbol = " "
-disabled = true
-
-[package]
-symbol = " "
-disabled = false
-
-[perl]
-symbol = " "
-disabled = true
-
-[php]
-symbol = " "
-disabled = true
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
 
 [python]
-symbol = " "
-disabled = true
-
-[ruby]
-symbol = " "
-disabled = true
-
-[rust]
-symbol = " "
-disabled = true
-
-[swift]
-symbol = "ﯣ "
-disabled = true
+format = "[$virtualenv]($style) "
+style = "bright-black"
