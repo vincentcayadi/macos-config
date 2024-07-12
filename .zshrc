@@ -5,6 +5,7 @@ SAVEHIST=1000
 # End of lines configured by zsh-newuser-install
 eval $(thefuck --alias)
 eval $(thefuck --alias FUCK)
+eval $(fzf --zsh)
 
 # ZSH Plugins
 source $(brew --prefix nvm)/nvm.sh
@@ -23,7 +24,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias sysclean='echo "Initiating Upgrades 🚀" && brew upgrade && brew update && echo "Cleaning 🧹" && brew autoremove && brew cleanup --prune=all && yarn cache clean && echo "Completed" '
 
 # yt-dlp
-alias bestaudio="yt-dlp -x --audio-format m4a"
+alias bestaudio="yt-dlp -x --embed-metadata --embed-thumbnail --audio-format m4a"
 
 
 export NVM_DIR="$HOME/.nvm"
@@ -34,3 +35,11 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(starship init zsh)"
 
 PATH=~/.console-ninja/.bin:$PATH
+export PATH="/opt/homebrew/opt/ncurses/bin:$PATH"
+
+# bun completions
+[ -s "/Users/vincent/.bun/_bun" ] && source "/Users/vincent/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

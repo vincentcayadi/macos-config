@@ -1,6 +1,6 @@
 font_family		VictorMono Nerd Font
 font_size		16
-window_padding_width	24
+window_padding_width	26
 hide_window_decorations titlebar-only
 
 remember_window_size yes
