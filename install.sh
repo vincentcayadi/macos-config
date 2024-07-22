@@ -44,6 +44,7 @@ brew install --cask orcaslicer
 brew install --cask playcover-community-beta
 brew install --cask transmission
 brew install --cask handbrake
+brew install --cask iina
 
 # Fonts
 brew install --cask font-victor-mono

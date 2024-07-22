@@ -7,6 +7,7 @@ ln -s "/Users/vincent/developer/macos-config/kitty" "/Users/vincent/.config/kitt
 ln -s "/Users/vincent/developer/macos-config/nvim" "/Users/vincent/.config/nvim" || echo "Failed to create symlink for nvim folder"
 ln -s "/Users/vincent/developer/macos-config/thefuck" "/Users/vincent/.config/thefuck" || echo "Failed to create symlink for thefuck folder"
 ln -s "/Users/vincent/developer/macos-config/yarn" "/Users/vincent/.config/yarn" || echo "Failed to create symlink for yarn folder"
+ln -s "/Users/vincent/developer/macos-config/fastfetch" "/Users/vincent/.config/fastfetch" || echo "Failed to create symlink for fastfetch folder"
 
 # Create symbolic link for files
 ln -s "/Users/vincent/developer/macos-config/starship.toml" "/Users/vincent/.config/starship.toml" || echo "Failed to create symlink for starship.toml"
