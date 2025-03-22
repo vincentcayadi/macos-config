@@ -22,16 +22,19 @@ brew install git
 brew install nvm
 brew install pnpm
 brew install --cask git-credential-manager
-brew install supabase/tap/supabase
 brew install --cask zed
-
+brew install --cask appcleaner
+brew install --cask keycastr
+brew install --cask insomnia
+brew install --cask kicad
+brew install aerospace
+brew install borders
 
 # Terminals & Browsers
 brew install --cask arc
-brew install --cask kitty
+brew install --cask ghostty
 
 # Office/School
-brew install --cask zoom
 brew install --cask figma
 brew install --cask google-drive
 brew install --cask microsoft-auto-update
@@ -46,11 +49,8 @@ brew install --cask transmission
 brew install --cask handbrake
 brew install --cask iina
 
-# Fonts
-brew install --cask font-victor-mono
-
 # Socials
-brew install --cask discord
+brew install --cask legcord
 brew install --cask telegram
 brew install --cask whatsapp
 

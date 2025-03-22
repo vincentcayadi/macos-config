@@ -12,10 +12,11 @@ source $(brew --prefix nvm)/nvm.sh
 
 #ALIAS
 alias ls="eza -alh --icons"
-alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
+alias lt='eza -aT --color=always --group-directories-first' # tree listing
 alias cat="bat"
 alias home="cd ~"
 alias icat="kitten icat"
+alias lrcpy="/Users/vincent/scripts/lrcput.py"
 export PATH=$PATH:"$HOME/.local/bin"
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -24,7 +25,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias sysclean='echo "Initiating Upgrades 🚀" && brew upgrade && brew update && echo "Cleaning 🧹" && brew autoremove && brew cleanup --prune=all && yarn cache clean && echo "Completed" '
 
 # yt-dlp
-alias bestaudio="yt-dlp -x --embed-metadata --embed-thumbnail --audio-format m4a"
+alias bestaudio="yt-dlp -x --embed-metadata --audio-format m4a"
 
 
 export NVM_DIR="$HOME/.nvm"
@@ -34,7 +35,7 @@ export NVM_DIR="$HOME/.nvm"
 #starship
 eval "$(starship init zsh)"
 
-PATH=~/.console-ninja/.bin:$PATH
+
 export PATH="/opt/homebrew/opt/ncurses/bin:$PATH"
 
 # bun completions
@@ -44,4 +45,5 @@ export PATH="/opt/homebrew/opt/ncurses/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-fastfetch --logo ~/.config/fastfetch/startup.png --logo-width 26 
+
+fastfetch -l ~/.config/fastfetch/ascii.txt  
