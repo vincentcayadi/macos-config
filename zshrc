@@ -49,12 +49,37 @@ alias cat="bat"
 alias home="cd ~"
 
 # System maintenance
-alias sysclean='echo "🚀 Starting cleanup..." && \
+alias sysclean='echo "Starting cleanup..." && \
   brew upgrade && brew update && \
   brew autoremove && brew cleanup --prune=all -s && \
   rm -rf ~/Library/Caches/Homebrew && \
-  echo "✅ Done - $(du -sh ~/Library/Caches 2>/dev/null | cut -f1) cache remaining"'
+  echo "Done - $(du -sh ~/Library/Caches 2>/dev/null | cut -f1) cache remaining"'
 
 # Media
-alias bestaudio="yt-dlp -x --embed-metadata --audio-format m4a"
+alias yt="yt-dlp"
+alias yta="yt-dlp -x --embed-metadata --audio-format m4a"
+alias ytv="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
+
+# Git
+alias g="git"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias gl="git pull --rebase"
+alias gd="git diff"
+alias gb="git checkout"
+alias lg="lazygit"
+
+# Dev
+alias v="nvim"
+alias zz="source ~/.zshrc"
+
+# Quick access
+alias dev="cd ~/developer"
+alias config="cd ~/developer/macos-config"
+
+# Update everything
+alias update="~/developer/macos-config/update-optimized.sh"
+
 export PATH="$HOME/.local/bin:$PATH"
