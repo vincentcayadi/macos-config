@@ -35,7 +35,7 @@
     {
       "type": "datetime",
       "key": "{#90}│ {#92}Datetime    {#90}│",
-      "format": "{$3}{year}-{month-pretty}-{day-in-month} [{weekday}]"
+      "format": "{$3}{year}-{month-pretty}-{day-in-month} {#2}[{weekday}]"
     },
     {
       "type": "title",

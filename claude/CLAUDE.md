@@ -13,3 +13,6 @@
 - Don't use class components (legacy codebase reasons)
 - Don't bypass our error boundary setup
 - Don't write 500-line components (break them up!)
+
+use bun as much as possible
+

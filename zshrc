@@ -1,9 +1,9 @@
 # ===== ZSH HISTORY =====
 HISTFILE=~/.histfile
-HISTSIZE=10000  # increased from 1000
+HISTSIZE=10000  
 SAVEHIST=10000
-setopt HIST_IGNORE_DUPS  # don't save duplicate commands
-setopt HIST_IGNORE_SPACE  # don't save commands starting with space
+setopt HIST_IGNORE_DUPS  
+setopt HIST_IGNORE_SPACE  
 
 # ===== PATH =====
 export PATH="$HOME/.local/bin:$PATH"
@@ -14,6 +14,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # ===== ENVIRONMENT VARIABLES =====
 export NVM_DIR="$HOME/.nvm"
 export BUN_INSTALL="$HOME/.bun"
+
+# ===== STARTUP =====
+# fastfetch -l ~/.config/fastfetch/ascii.txt
 
 # ===== TOOL INITIALIZATION =====
 # NVM (Node Version Manager)
@@ -45,17 +48,13 @@ alias cat="bat"
 # Navigation
 alias home="cd ~"
 
-# Kitty specific
-alias icat="kitten icat"
-
-# Custom scripts
-alias lrcpy="$HOME/scripts/lrcput.py"
-
 # System maintenance
-alias sysclean='echo "Initiating Upgrades 🚀" && brew upgrade && brew update && echo "Cleaning 🧹" && brew autoremove && brew cleanup --prune=all && yarn cache clean && echo "Completed"'
+alias sysclean='echo "🚀 Starting cleanup..." && \
+  brew upgrade && brew update && \
+  brew autoremove && brew cleanup --prune=all -s && \
+  rm -rf ~/Library/Caches/Homebrew && \
+  echo "✅ Done - $(du -sh ~/Library/Caches 2>/dev/null | cut -f1) cache remaining"'
 
 # Media
 alias bestaudio="yt-dlp -x --embed-metadata --audio-format m4a"
-
-# ===== STARTUP =====
-fastfetch -l ~/.config/fastfetch/ascii.txt
+export PATH="$HOME/.local/bin:$PATH"

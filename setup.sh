@@ -157,13 +157,6 @@ create_symlink "$DOTFILES_DIR/fastfetch" "$HOME/.config/fastfetch" "fastfetch co
 # thefuck
 create_symlink "$DOTFILES_DIR/thefuck" "$HOME/.config/thefuck" "thefuck config"
 
-# Newsboat
-if [ -d "$DOTFILES_DIR/.newsboat" ]; then
-    create_symlink "$DOTFILES_DIR/.newsboat" "$HOME/.newsboat" "Newsboat config"
-elif [ -d "$DOTFILES_DIR/newsboat" ]; then
-    create_symlink "$DOTFILES_DIR/newsboat" "$HOME/.config/newsboat" "Newsboat config"
-fi
-
 # Claude folder
 create_symlink "$DOTFILES_DIR/claude" "$HOME/claude" "Claude folder"
 
@@ -189,8 +182,52 @@ if command -v fzf &> /dev/null; then
 fi
 
 # Source zsh config
-echo "✓ Sourcing .zshrc..."
+echo "Sourcing .zshrc..."
 source "$HOME/.zshrc" 2>/dev/null || true
+
+echo ""
+
+# ===== STEP 6: BUILD OPTIMIZED SOFTWARE =====
+echo "----------------------------------------------"
+echo "STEP 6: Building Optimized Software from Source"
+echo "----------------------------------------------"
+echo ""
+
+# Install Rust if not present
+if ! command -v cargo &> /dev/null; then
+    echo "Installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    source "$HOME/.cargo/env"
+    echo "Rust installed"
+else
+    echo "Rust already installed"
+fi
+
+# Clone repos if they don't exist
+mkdir -p ~/developer
+if [ ! -d ~/developer/ripgrep ]; then
+    echo "Cloning ripgrep..."
+    git clone https://github.com/BurntSushi/ripgrep ~/developer/ripgrep
+fi
+
+if [ ! -d ~/developer/neovim ]; then
+    echo "Cloning neovim..."
+    git clone https://github.com/neovim/neovim ~/developer/neovim
+fi
+
+# Run build script
+if [ -f "$DOTFILES_DIR/build-optimized.sh" ]; then
+    echo "Building optimized binaries (this may take a few minutes)..."
+    bash "$DOTFILES_DIR/build-optimized.sh"
+
+    # Clean up build artifacts
+    echo "Cleaning up build artifacts..."
+    cd ~/developer/ripgrep && cargo clean
+    cd ~/developer/neovim && make distclean 2>/dev/null || true
+    echo "Build artifacts cleaned"
+else
+    echo "build-optimized.sh not found, skipping"
+fi
 
 echo ""
 
