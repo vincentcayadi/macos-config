@@ -47,6 +47,26 @@
 
       # thefuck alias
       command -v thefuck >/dev/null 2>&1 && eval "$(thefuck --alias)"
+
+      sysclean() {
+        echo "Updating Nix flake inputs..."
+        nix flake update ~/nix-config &&
+        echo "Rebuilding macOS configuration..."
+        darwin-rebuild switch --flake ~/nix-config#amaterasu &&
+        echo "Cleaning old Nix generations..."
+        nix-collect-garbage -d &&
+        echo "Done."
+      }
+
+      brewclean() {
+        echo "Updating Homebrew..."
+        brew update &&
+        brew upgrade &&
+        brew autoremove &&
+        brew cleanup --prune=all -s &&
+        rm -rf "$HOME/Library/Caches/Homebrew" &&
+        echo "Done."
+      }
     '';
 
     shellAliases = {
@@ -83,31 +103,6 @@
       zz = "source ~/.zshrc";
     };
 
-    shellGlobalAliases = { };
-
-    functions = {
-      # Update nix config and rebuild
-      sysclean = ''
-        echo "Updating Nix flake inputs..."
-        nix flake update ~/nix-config &&
-        echo "Rebuilding macOS configuration..."
-        darwin-rebuild switch --flake ~/nix-config#amaterasu &&
-        echo "Cleaning old Nix generations..."
-        nix-collect-garbage -d &&
-        echo "Done."
-      '';
-
-      # Separate homebrew maintenance (for remaining casks/brews)
-      brewclean = ''
-        echo "Updating Homebrew..."
-        brew update &&
-        brew upgrade &&
-        brew autoremove &&
-        brew cleanup --prune=all -s &&
-        rm -rf "$HOME/Library/Caches/Homebrew" &&
-        echo "Done."
-      '';
-    };
   };
 
   # Tool integrations — each program module adds its own zsh init snippet
