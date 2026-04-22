@@ -1,0 +1,221 @@
+# ============================================================================
+# AeroSpace Configuration
+# Place this file at: ~/.aerospace.toml
+# Documentation: https://nikitabobko.github.io/AeroSpace/
+# ============================================================================
+
+# ============================================================================
+# STARTUP & LOGIN
+# ============================================================================
+
+start-at-login = true
+
+# Commands that run after login to macOS user session
+after-login-command = []
+
+# Commands that run after AeroSpace startup (runs after 'after-login-command')
+after-startup-command = []
+
+# ============================================================================
+# NORMALIZATION
+# ============================================================================
+
+# Flatten nested containers automatically
+enable-normalization-flatten-containers = true
+
+# Create opposite orientation for nested containers
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# ============================================================================
+# LAYOUT SETTINGS
+# ============================================================================
+
+# Default layout: 'tiles' or 'accordion'
+default-root-container-layout = 'tiles'
+
+# Default orientation: 'horizontal' | 'vertical' | 'auto'
+# 'auto' = wide monitors get horizontal, tall monitors get vertical
+default-root-container-orientation = 'auto'
+
+# Accordion padding (set to 0 to disable)
+accordion-padding = 30
+
+# ============================================================================
+# BEHAVIOR
+# ============================================================================
+
+# Mouse follows focus when switching monitors
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Prevent accidental cmd-h hiding
+automatically-unhide-macos-hidden-apps = false
+
+# ============================================================================
+# GAPS & SPACING
+# ============================================================================
+
+[gaps]
+inner.horizontal = 9
+inner.vertical = 5
+outer.left = 9
+outer.right = 9
+outer.top = 5
+outer.bottom = 5
+
+# ============================================================================
+# KEYBOARD LAYOUT
+# ============================================================================
+
+[key-mapping]
+preset = 'qwerty'  # Options: qwerty | dvorak | colemak
+
+# ============================================================================
+# WORKSPACE TO MONITOR ASSIGNMENT
+# ============================================================================
+# Workspaces 1-5: Main monitor (built-in display)
+# Workspaces 6-8: External monitor (27GN7)
+# Workspace 9: Sidecar/AirPlay display
+# Workspace M: Music (Feishin)
+# Workspace T: Terminal (Ghostty)
+# Workspace S: Social (Telegram, WhatsApp)
+
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = ['27GN7', 'main']
+7 = ['27GN7', 'main']
+8 = ['27GN7', 'main']
+9 = ['^.*AirPlay.*$', 'main']
+M = 'main'
+T = 'main'
+S = 'main'
+
+# ============================================================================
+# KEY BINDINGS - MAIN MODE
+# ============================================================================
+
+[mode.main.binding]
+
+# ----------------------------------------------------------------------------
+# Applications
+# ----------------------------------------------------------------------------
+
+cmd-enter = 'exec-and-forget open -n /Volumes/Macintosh\ HD/Applications/Ghostty.app'
+
+# ----------------------------------------------------------------------------
+# Layout Management
+# ----------------------------------------------------------------------------
+
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+# ----------------------------------------------------------------------------
+# Window Navigation (vim-style)
+# ----------------------------------------------------------------------------
+
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# ----------------------------------------------------------------------------
+# Window Movement (vim-style)
+# ----------------------------------------------------------------------------
+
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# ----------------------------------------------------------------------------
+# Window Resizing
+# ----------------------------------------------------------------------------
+
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+
+# ----------------------------------------------------------------------------
+# Workspace Switching
+# ----------------------------------------------------------------------------
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-m = 'workspace M'  # Music
+alt-t = 'workspace T'  # Terminal
+alt-s = 'workspace S'  # Social
+
+# Switch to previous workspace
+alt-tab = 'workspace-back-and-forth'
+
+# ----------------------------------------------------------------------------
+# Move Window to Workspace
+# ----------------------------------------------------------------------------
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-m = 'move-node-to-workspace M'
+alt-shift-t = 'move-node-to-workspace T'
+alt-shift-s = 'move-node-to-workspace S'
+
+# ----------------------------------------------------------------------------
+# Service Mode
+# ----------------------------------------------------------------------------
+
+alt-shift-semicolon = 'mode service'
+
+# ============================================================================
+# KEY BINDINGS - SERVICE MODE
+# ============================================================================
+# Enter with: alt-shift-semicolon
+# Quick reload: alt-shift-semicolon, then Esc
+
+[mode.service.binding]
+
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+
+# Join windows with vim-style directions
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+# ============================================================================
+# WINDOW RULES
+# ============================================================================
+# Auto-assign applications to specific workspaces on launch
+
+[[on-window-detected]]
+if.app-id = 'org.jeffvli.feishin'
+run = 'move-node-to-workspace M'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace T'
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = 'move-node-to-workspace S'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace S'

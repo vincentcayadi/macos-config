@@ -1,0 +1,4 @@
+.DS_Store
+result
+configs/btop/btop.log
+configs/thefuck/__pycache__/
