@@ -30,7 +30,6 @@
       "battery-toolkit"
       "betterdisplay"
       "dorion"
-      "figma"
       "font-lora"
       "font-monaspace"
       "ghostty"
