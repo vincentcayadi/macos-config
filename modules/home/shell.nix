@@ -33,7 +33,7 @@
       compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
     '';
 
-    initExtra = ''
+    initContent = ''
       # History options not exposed as home-manager settings
       setopt HIST_FIND_NO_DUPS
       setopt HIST_REDUCE_BLANKS
@@ -45,8 +45,8 @@
       # Bun completions
       [[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
 
-      # thefuck alias
-      command -v thefuck >/dev/null 2>&1 && eval "$(thefuck --alias)"
+      # pay-respects: press f to fix last command (replaces thefuck)
+      command -v pay-respects >/dev/null 2>&1 && eval "$(pay-respects zsh --alias)"
 
       sysclean() {
         echo "Updating Nix flake inputs..."

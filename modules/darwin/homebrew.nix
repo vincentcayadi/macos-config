@@ -15,9 +15,8 @@
 
     # Formulas not available in nixpkgs
     brews = [
-      "mlx"      # Apple MLX framework — not in nixpkgs
-      "mlx-c"    # C bindings for MLX — not in nixpkgs
-      "mongosh"  # MongoDB shell — not in nixpkgs (proprietary)
+      "mlx"    # Apple MLX framework — not in nixpkgs
+      "mlx-c"  # C bindings for MLX — not in nixpkgs
     ];
 
     # GUI apps and drivers — kept in Homebrew since nixpkgs lacks darwin GUI support

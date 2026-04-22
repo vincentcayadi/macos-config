@@ -28,9 +28,9 @@
     nodejs        # current LTS; pin to nodejs_22 if you need a specific version
     pnpm
     go
-    python312
     python313
-    # python314  # uncomment once available in nixpkgs-unstable
+    # python312 causes a conflict with python313 (both ship `idle`).
+    # Use `nix-shell -p python312` for one-off needs.
 
     # Cloud & infrastructure
     cloudflared
@@ -58,7 +58,7 @@
     curl
     ruff
     mas           # Mac App Store CLI (used by nix-darwin homebrew module too)
-    thefuck
+    pay-respects  # maintained Rust replacement for thefuck
 
     # HPC (openmpi replaces brew open-mpi)
     openmpi

@@ -4,11 +4,8 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
 
-  # Nix daemon settings
-  nix.settings = {
-    experimental-features = "nix-command flakes";
-    trusted-users = [ "root" "@admin" "vincent" ];
-  };
+  # Determinate Nix manages its own daemon — disable nix-darwin's Nix management
+  nix.enable = false;
 
   # Minimal system packages — most packages live in home-manager
   environment.systemPackages = [ pkgs.git ];
@@ -20,6 +17,9 @@
     home = "/Users/vincent";
     shell = pkgs.zsh;
   };
+
+  # Required by nix-darwin for options that apply to a specific user (e.g. homebrew)
+  system.primaryUser = "vincent";
 
   # Required: tracks state version across darwin-rebuild generations
   system.stateVersion = 5;
