@@ -1,0 +1,18 @@
+[user]
+	name = Vincent Cayadi
+	email = 57314503+vincentcayadi@users.noreply.github.com
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[credential]
+	helper =
+	helper = git-credential-manager
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+
+[credential "https://codeberg.org"]
+	provider = generic

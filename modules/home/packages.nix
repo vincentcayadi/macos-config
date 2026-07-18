@@ -34,7 +34,6 @@
 
     # Cloud & infrastructure
     cloudflared
-    gh            # GitHub CLI
     glab          # GitLab CLI
 
     # Build tools
@@ -58,6 +57,7 @@
     curl
     ruff
     mas           # Mac App Store CLI (used by nix-darwin homebrew module too)
+    nix-index     # provides nix-locate for pay-respects
     pay-respects  # maintained Rust replacement for thefuck
 
     # HPC (openmpi replaces brew open-mpi)

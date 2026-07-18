@@ -1,0 +1,15 @@
+# Frequently used runtimes follow current stable release channels.
+# Run `mise install` on a new Mac and `mise upgrade` when you choose to update.
+[tools]
+bun = "latest"
+go = "latest"
+node = "lts"
+python = "latest"
+
+# Stable upstream release. extract_all keeps the runtime-rule helper binaries.
+"ubi:iffse/pay-respects" = { version = "0.8.8", extract_all = true }
+
+# Rare tools are intentionally on demand:
+#   mise x deno@latest -- deno --version
+#   mise x pnpm@latest -- pnpm --version
+# Add one to a project with `mise use deno@latest` or `mise use pnpm@latest`.

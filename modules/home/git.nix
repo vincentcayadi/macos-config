@@ -3,10 +3,12 @@
     enable = true;
     lfs.enable = true;
 
-    userName = "Vincent Cayadi";
-    userEmail = "57314503+vincentcayadi@users.noreply.github.com";
+    settings = {
+      user = {
+        name = "Vincent Cayadi";
+        email = "57314503+vincentcayadi@users.noreply.github.com";
+      };
 
-    extraConfig = {
       # git-credential-manager installed as a Homebrew cask.
       # Empty string first entry clears any system-level helper.
       credential.helper = [

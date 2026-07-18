@@ -3,12 +3,7 @@
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
     "/opt/homebrew/opt/ncurses/bin"
-    "${config.home.homeDirectory}/.bun/bin"
   ];
-
-  home.sessionVariables = {
-    BUN_INSTALL = "${config.home.homeDirectory}/.bun";
-  };
 
   programs.zsh = {
     enable = true;
@@ -50,9 +45,9 @@
 
       sysclean() {
         echo "Updating Nix flake inputs..."
-        nix flake update ~/nix-config &&
+        (cd ~/nix-config && nix flake update) &&
         echo "Rebuilding macOS configuration..."
-        darwin-rebuild switch --flake ~/nix-config#amaterasu &&
+        sudo darwin-rebuild switch --flake ~/nix-config#amaterasu &&
         echo "Cleaning old Nix generations..."
         nix-collect-garbage -d &&
         echo "Done."
