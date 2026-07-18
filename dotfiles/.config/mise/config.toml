@@ -1,0 +1,16 @@
+# Global mise configuration.
+#
+# This file is always active, unlike the repository-local mise.toml which only
+# applies inside this repo's directory tree. Tools declared here are what make
+# `bun`, `go`, etc. resolve outside of any project — without them, PATH falls
+# through to whatever else is installed system-wide.
+#
+# Project-specific pins still belong in a per-project mise.toml and will
+# override anything declared here.
+
+[tools]
+python = "latest"
+
+# Not a language runtime, but .zshrc evaluates it at every shell start and it
+# has no Homebrew formula, so it has to be globally active rather than on demand.
+"ubi:iffse/pay-respects" = { version = "0.8.8", extract_all = true }

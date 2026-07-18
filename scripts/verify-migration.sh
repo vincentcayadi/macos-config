@@ -47,7 +47,7 @@ echo
 echo "== Dotfile links =="
 for relative in .zprofile .zshrc .gitconfig .tmux.conf .aerospace.toml \
   .config/nvim .config/btop .config/fastfetch .config/starship.toml \
-  .local/bin/tmux-sessionizer; do
+  .config/mise/config.toml .local/bin/tmux-sessionizer; do
   target="$HOME/$relative"
   expected="$ROOT/dotfiles/$relative"
   if [[ -L "$target" && "$(readlink "$target")" == "$expected" ]]; then

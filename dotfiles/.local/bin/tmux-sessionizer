@@ -2,7 +2,7 @@
 
 DIRS=(
  "$HOME/developer"
- "$HOME/developer/macos-config"
+ "$HOME/macos-config"
  "$HOME"
 )
 

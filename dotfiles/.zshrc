@@ -44,7 +44,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias home='cd ~'
 alias dev='cd ~/developer'
-alias config='cd ~/nix-config'
+alias config='cd ~/macos-config'
 
 # Media
 alias yt='yt-dlp'

@@ -34,6 +34,7 @@ MAPPINGS=(
   ".config/btop|$HOME/.config/btop"
   ".config/fastfetch|$HOME/.config/fastfetch"
   ".config/starship.toml|$HOME/.config/starship.toml"
+  ".config/mise/config.toml|$HOME/.config/mise/config.toml"
   ".local/bin/tmux-sessionizer|$HOME/.local/bin/tmux-sessionizer"
 )
 

@@ -16,6 +16,13 @@ brew "direnv"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
+# Language runtimes. Python is the exception and is owned by mise; see
+# dotfiles/.config/mise/config.toml. Everything here is owned by Homebrew so
+# there is exactly one source per runtime.
+brew "node"
+brew "bun"
+brew "go"
+
 # Terminal tools
 brew "bat"
 brew "btop"
@@ -49,8 +56,9 @@ brew "sdl2"
 brew "open-mpi"
 brew "ncurses"
 
-# Database CLI. Keep the major version explicit for data compatibility.
+# Database CLIs. Keep the Postgres major version explicit for data compatibility.
 brew "postgresql@17"
+brew "mongosh"
 
 # AI and ML
 brew "ollama"
