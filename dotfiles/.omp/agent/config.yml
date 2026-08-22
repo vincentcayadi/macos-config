@@ -76,3 +76,5 @@ power:
 composer: 
   shape: claude
 externalThinking: false
+spelling: 
+  autocomplete: false
