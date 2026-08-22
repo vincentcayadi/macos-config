@@ -1,0 +1,11 @@
+{
+  "colors": {
+    "selectedBg": "",
+    "userMessageBg": "",
+    "customMessageBg": "",
+    "toolPendingBg": "",
+    "toolSuccessBg": "",
+    "toolErrorBg": "",
+    "statusLineBg": ""
+  }
+}

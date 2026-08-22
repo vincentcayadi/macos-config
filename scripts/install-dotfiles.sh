@@ -35,6 +35,13 @@ MAPPINGS=(
   ".config/fastfetch|$HOME/.config/fastfetch"
   ".config/starship.toml|$HOME/.config/starship.toml"
   ".config/mise/config.toml|$HOME/.config/mise/config.toml"
+  ".agents|$HOME/.agents"
+  ".agents/skills|$HOME/.claude/skills"
+  ".omp/agent/AGENTS.md|$HOME/.omp/agent/AGENTS.md"
+  ".omp/agent/RULES.md|$HOME/.omp/agent/RULES.md"
+  ".omp/agent/agents|$HOME/.omp/agent/agents"
+  ".omp/agent/extensions|$HOME/.omp/agent/extensions"
+  ".omp/agent/themes|$HOME/.omp/agent/themes"
   ".local/bin/tmux-sessionizer|$HOME/.local/bin/tmux-sessionizer"
 )
 

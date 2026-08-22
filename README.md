@@ -10,8 +10,10 @@ Python and a few standalone binaries, and plain symlinks for dotfiles.
 | `Brewfile` | Formulae, casks, fonts, and Mac App Store apps. |
 | `dotfiles/` | Everything symlinked into `$HOME`. |
 | `dotfiles/.config/mise/config.toml` | Global mise tools. Always active. |
-| `scripts/bootstrap.sh` | Installs Brewfile packages, mise tools, and the pi agent. |
-| `scripts/install-dotfiles.sh` | Creates the `$HOME` symlinks. |
+| `dotfiles/.agents/` | Canonical shared skills and installer lock for OMP, Codex, and Claude Code. |
+| `dotfiles/.omp/agent/` | Sanitized OMP rules, agents, extensions, themes, and fresh-machine config. |
+| `scripts/bootstrap.sh` | Installs Brewfile packages, mise tools, OMP, and Claude Code. |
+| `scripts/install-dotfiles.sh` | Creates the `$HOME` and shared skill symlinks. |
 | `scripts/setup-macos.sh` | Intentionally a no-op; no macOS defaults are managed. |
 | `scripts/verify-migration.sh` | Asserts nothing resolves through Nix and links are correct. |
 
@@ -22,10 +24,19 @@ Exactly one source per tool, so nothing shadows anything else:
 - **Homebrew** owns `node`, `bun`, `go`, and every other CLI, cask, and font.
 - **mise** owns `python` and `pay-respects` (the latter has no Homebrew formula
   and is evaluated by `.zshrc` on every shell start, so it must be global).
-- **Claude Code** installs its own standalone binary into `~/.local/bin` and is
-  not managed here.
-- **pi** is a global npm package in Homebrew's node prefix. A major `node`
-  upgrade can orphan it; rerunning `bootstrap.sh --apply` reinstalls it.
+- **Bun global packages** own Claude Code.
+- **OMP** uses the signed standalone binary from `https://omp.sh/install`,
+  installed at `~/.local/bin/omp`. It is not managed by Bun, npm, or Homebrew.
+  `bootstrap.sh --apply` restores both clients.
+- **`dotfiles/.agents/skills`** is the single skill source. OMP and Codex read
+  `~/.agents/skills`; Claude Code receives `~/.claude/skills` as a link to the
+  same directory. Adding, updating, or removing a skill changes this repository
+  immediately instead of requiring a hand-maintained installer list.
+- **`dotfiles/.omp/agent`** owns OMP rules, custom agents, extensions, and themes
+  through links. Its sanitized `config.yml` is a fresh-machine snapshot, not a
+  link, because OMP replaces that file atomically when settings change. Bootstrap
+  restores the snapshot only when no live config exists. Credentials, `ssh.json`,
+  `models.yml`, sessions, databases, logs, caches, and blobs are never backed up.
 
 Rarely used runtimes stay on demand rather than on PATH:
 

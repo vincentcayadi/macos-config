@@ -1,0 +1,78 @@
+providers: 
+  {}
+webSearchOrder: 
+  - codex
+symbolPreset: ascii
+theme: 
+  dark: ghostty-glass
+defaultThinkingLevel: max
+edit: 
+  mode: hashline
+  fuzzyMatch: true
+  fuzzyThreshold: 0.95
+lsp: 
+  enabled: true
+  lazy: true
+  diagnosticsOnWrite: true
+  formatOnWrite: true
+  diagnosticsOnEdit: true
+compaction: 
+  enabled: true
+  midTurnEnabled: true
+  methodOrder: 
+    - snapcompact
+    - remote
+    - soft
+display: 
+  showTokenUsage: true
+  shimmer: classic
+  smoothStreaming: true
+statusLine: 
+  separator: pipe
+  sessionAccent: true
+  transparent: true
+  contextLine: percentage
+  compactThinkingLevel: false
+  showHookStatus: true
+terminal: 
+  showProgress: true
+  autoResume: false
+dev: 
+  autoqaConsent: granted
+setupVersion: 2
+modelRoles: 
+  plan: openai-codex/gpt-5.6-sol:max
+  smol: openai-codex/gpt-5.3-codex-spark:medium
+  task: "@smol"
+  tiny: zai/glm-5.3:minimal
+  slow: openai-codex/gpt-5.6-sol:high
+  advisor: "@slow"
+  default: openai-codex/gpt-5.6-sol:high
+cycleOrder: 
+  - smol
+  - default
+  - slow
+task: 
+  showResolvedModelBadge: true
+  maxConcurrency: 6
+  maxRecursionDepth: 2
+  isolation: 
+    mode: auto
+  agentModelOverrides: 
+    task: openai-codex/gpt-5.3-codex-spark:medium
+    scout: zai/glm-5.3:low
+    librarian: zai/glm-5.3:low
+    sonic: openai-codex/gpt-5.3-codex-spark:low
+    hard-task: openai-codex/gpt-5.6-sol:high
+    reviewer: openai-codex/gpt-5.6-sol:high
+    security-reviewer: openai-codex/gpt-5.6-sol:high
+    designer: openai-codex/gpt-5.6-sol:high
+  eager: preferred
+  enableEffort: true
+  enableLsp: true
+  maxEffort: xhigh
+power: 
+  sleepPrevention: "off"
+composer: 
+  shape: claude
+externalThinking: false

@@ -30,7 +30,7 @@ fi
 
 echo
 echo "== Brewfile =="
-if /opt/homebrew/bin/brew bundle check --file "$ROOT/Brewfile"; then
+if HOMEBREW_NO_AUTO_UPDATE=1 /opt/homebrew/bin/brew bundle check --file "$ROOT/Brewfile"; then
   echo "OK       Brewfile dependencies installed"
 else
   failures=$((failures + 1))
@@ -39,7 +39,7 @@ fi
 echo
 echo "== Commands must not resolve through Nix =="
 for command_name in git git-lfs nvim mise bun node python3 go pay-respects \
-  starship zoxide fzf direnv tmux btop rg ruff psql ollama; do
+  starship zoxide fzf direnv tmux btop rg ruff psql ollama omp claude; do
   check_command "$command_name"
 done
 
@@ -47,7 +47,9 @@ echo
 echo "== Dotfile links =="
 for relative in .zprofile .zshrc .gitconfig .tmux.conf .aerospace.toml \
   .config/nvim .config/btop .config/fastfetch .config/starship.toml \
-  .config/mise/config.toml .local/bin/tmux-sessionizer; do
+  .config/mise/config.toml .agents .omp/agent/AGENTS.md .omp/agent/RULES.md \
+  .omp/agent/agents .omp/agent/extensions .omp/agent/themes \
+  .local/bin/tmux-sessionizer; do
   target="$HOME/$relative"
   expected="$ROOT/dotfiles/$relative"
   if [[ -L "$target" && "$(readlink "$target")" == "$expected" ]]; then
@@ -57,6 +59,15 @@ for relative in .zprofile .zshrc .gitconfig .tmux.conf .aerospace.toml \
     failures=$((failures + 1))
   fi
 done
+
+claude_skills="$HOME/.claude/skills"
+expected_skills="$ROOT/dotfiles/.agents/skills"
+if [[ -L "$claude_skills" && "$(readlink "$claude_skills")" == "$expected_skills" ]]; then
+  echo "OK       $claude_skills"
+else
+  echo "MISMATCH $claude_skills"
+  failures=$((failures + 1))
+fi
 
 echo
 echo "== Tool checks =="
