@@ -25,7 +25,12 @@ command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 command -v pay-respects >/dev/null 2>&1 && eval "$(pay-respects zsh --alias)"
+command -v thefuck >/dev/null 2>&1 && eval "$(thefuck --alias)"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+
+omp () {
+    headroom wrap omp "$@"
+}
 
 # Update installed tools without uninstalling packages or deleting caches.
 brewclean() {
@@ -70,3 +75,6 @@ alias zz='source ~/.zshrc'
 if [[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+export PATH="/Users/vincent/.bun/bin:$PATH"
+
