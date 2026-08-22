@@ -150,16 +150,6 @@
       "installedAt": "2026-08-22T09:34:10.869Z",
       "updatedAt": "2026-08-22T09:34:10.869Z"
     },
-    "wait-what": {
-      "source": "mattpocock/skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/mattpocock/skills.git",
-      "skillPath": "skills/productivity/wait-what/SKILL.md",
-      "skillFolderHash": "c119d66111cc1bac94cbc51322cd34ed21aa0446",
-      "pluginName": "mattpocock-skills",
-      "installedAt": "2026-08-22T09:34:10.870Z",
-      "updatedAt": "2026-08-22T09:34:10.870Z"
-    },
     "writing-for-agents": {
       "source": "mattpocock/skills",
       "sourceType": "github",

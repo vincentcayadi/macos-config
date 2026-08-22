@@ -1,9 +1,13 @@
 ---
 name: unslop
-description: Cut AI tells from any writing. Must always apply.
+description: Edit documentation and long-form prose to remove AI writing patterns and add a human voice. Use for README files, guides, articles, changelogs, and product copy. Do not use for normal chat replies, code, logs, or terse status updates.
 ---
 
 # Unslop
+
+## Scope
+
+Use this skill only for documentation and long-form prose. The sticky OMP reply rules control normal chat.
 
 Edit text to remove AI patterns and add human voice.
 
